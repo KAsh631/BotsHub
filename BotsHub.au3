@@ -37,6 +37,7 @@
 #include 'lib/Utils.au3'
 #include 'lib/Utils-Agents.au3'
 #include 'lib/Utils-Storage.au3'
+#include 'lib/Utils-Console.au3'
 #include 'lib/Utils-Debugger.au3'
 #include 'lib/Build_PW_Heroic-Refrain.au3'
 #include 'lib/BotsHub-GUI.au3'
@@ -96,10 +97,6 @@ Global Const $SUCCESS = 0
 Global Const $FAIL = 1
 Global Const $PAUSE = 2
 
-Global Const $AVAILABLE_FARMS = '|Asuran|Boreal|CoF|Corsairs|Deldrimor|Dragon Moss|Eden Iris|Feathers|Follower|FoW|FoW Tower of Courage|Froggy|Gemstones|Gemstone Margonite|Gemstone Stygian|Gemstone Torment|' & _
-	'Glint Challenge|Jade Brotherhood|Kournans|Kurzick|Kurzick Drazach|Lightbringer & Sunspear|Lightbringer|LDOA|Luxon|Mantids|Ministerial Commendations|Minotaurs|Nexus Challenge|Norn|OmniFarm|Pongmei|' & _
-	'Raptors|SoO|SpiritSlaves|Sunspear Armor|Tasca|TunnelsOfTheForsaken|Underworld|Vaettirs|Vanguard|Voltaic|War Supply Keiran|Storage|Tests|TestSuite|Dynamic execution'
-
 Global Const $AVAILABLE_DISTRICTS = '|Random|Random EU|Random US|Random Asia|America|China|English|French|German|International|Italian|Japan|Korea|Polish|Russian|Spanish'
 
 Global Const $AVAILABLE_HEROES = '||Acolyte Jin|Acolyte Sousuke|Anton|Devona|Dunkoro|General Morgahn|Ghost of Althea|Goren|Gwen|Hayda|Jora|Kahmu|Keiran Thackeray|Koss|Livia|' & _
@@ -119,7 +116,6 @@ Global $loot_configuration = 'Default Loot Configuration'
 Global $inventory_space_needed = 5
 Global $run_timer = Null
 Global $global_farm_setup = False
-Global $log_level = $LVL_INFO
 
 ; Farm Name;Farm function;Inventory space;Farm duration
 Global $farm_map[]
@@ -147,13 +143,13 @@ Global $bags_count = 5
 
 
 #Region Main loops
-Main()
+BotsHubMain()
 
 ;------------------------------------------------------
 ; Title...........:	Main
 ; Description.....:	run the main program
 ;------------------------------------------------------
-Func Main()
+Func BotsHubMain()
 	; Verify validity
 	If @AutoItVersion < '3.3.16.1' Then
 		MsgBox(16, 'Error', 'This bot requires AutoIt version 3.3.16.1 or higher. You are using ' & @AutoItVersion & '.')
